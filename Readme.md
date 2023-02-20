@@ -5,7 +5,7 @@
 </p>
 
 
-<h2 align="center">TEP Database App</h2>
+<h2 align="center">TEP Medical Database</h2>
 
 
 <!-- TABLE OF CONTENTS -->
