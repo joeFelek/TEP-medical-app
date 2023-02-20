@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ebebeb;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HY360.LogController">
+   <ImageView fitHeight="228.0" fitWidth="229.0" layoutX="186.0" layoutY="-17.0">
+      <Image url="@../Resources/8744534.png" />
+   </ImageView>
+   <JFXTextField fx:id="usernameField" focusColor="#cd4938" labelFloat="true" layoutX="385.0" layoutY="211.0" prefHeight="25.0" prefWidth="162.0" promptText="username" />
+   <JFXPasswordField fx:id="passwordField" focusColor="#cd4839" labelFloat="true" layoutX="385.0" layoutY="272.0" prefHeight="25.0" prefWidth="162.0" promptText="password" />
+   <JFXTextField fx:id="databaseField" focusColor="#cd4839" labelFloat="true" layoutX="38.0" layoutY="211.0" prefHeight="25.0" prefWidth="209.0" promptText="Database Name" />
+   <JFXButton fx:id="createTableBtn" buttonType="RAISED" layoutX="37.0" layoutY="272.0" onAction="#Create" style="-fx-background-color: #39cdbe;" text="Create Tables" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font>
+   </JFXButton>
+   <JFXButton fx:id="InsertValuesBtn" buttonType="RAISED" layoutX="147.0" layoutY="272.0" onAction="#Insert" prefHeight="29.0" prefWidth="101.0" style="-fx-background-color: #39cdbe;" text="Insert Values" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font>
+   </JFXButton>
+   <JFXButton fx:id="logInBtn" buttonType="RAISED" layoutX="437.0" layoutY="327.0" onAction="#logIn" style="-fx-background-color: #39cdbe;" text="Log In" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font>
+   </JFXButton>
+</AnchorPane>

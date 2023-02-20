@@ -1,0 +1,7 @@
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #cd3948;
+}
+
+.jfx-radio-button {
+    -jfx-selected-color: #cd3948;
+}

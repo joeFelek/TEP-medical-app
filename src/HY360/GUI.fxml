@@ -1,0 +1,1167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HY360.Controller">
+   <AnchorPane fx:id="staffPane" layoutX="233.0" prefHeight="800.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="staffInsertNewPane" layoutX="841.0" layoutY="64.0" prefHeight="433.0" prefWidth="206.0" style="-fx-background-color: #dedede;" visible="false">
+         <JFXTextField fx:id="staffInNameField" focusColor="#cd3948" labelFloat="true" layoutX="37.0" layoutY="33.0" promptText="Name" unFocusColor="BLACK" />
+         <JFXTextField fx:id="staffInPhoneField" focusColor="#cd3948" labelFloat="true" layoutX="37.0" layoutY="84.0" promptText="Phone" unFocusColor="BLACK" />
+         <JFXTextField fx:id="staffInAddrField" focusColor="#cd3948" labelFloat="true" layoutX="37.0" layoutY="138.0" promptText="Address" unFocusColor="BLACK" />
+         <JFXComboBox fx:id="staffInPosBox" focusColor="#cd3948" labelFloat="true" layoutX="37.0" layoutY="193.0" prefHeight="25.0" prefWidth="135.0" promptText="Position" unFocusColor="BLACK" />
+         <JFXTextField fx:id="staffInTitleField" focusColor="#cd3948" labelFloat="true" layoutX="37.0" layoutY="248.0" promptText="Position Title" unFocusColor="BLACK" />
+         <JFXButton fx:id="staffInsertBtn" buttonType="RAISED" layoutX="62.0" layoutY="372.0" onAction="#staffInsert" prefHeight="36.0" prefWidth="86.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Insert" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <Label fx:id="staffInError" layoutX="24.0" layoutY="382.0" text="Error" textFill="RED" />
+         <JFXTextField fx:id="staffPassword" focusColor="#cd3948" labelFloat="true" layoutX="37.0" layoutY="308.0" promptText="Password" unFocusColor="BLACK" />
+      </AnchorPane>
+      <AnchorPane fx:id="staffAllStaffPane" layoutX="1.0" layoutY="70.0" prefHeight="729.0" prefWidth="840.0" style="-fx-background-color: #ebebeb;">
+         <TableView fx:id="staffAllView" layoutX="14.0" layoutY="101.0" prefHeight="528.0" prefWidth="815.0" tableMenuButtonVisible="true">
+            <columns>
+               <TableColumn fx:id="staffIdCol" prefWidth="44.0" text="ID" />
+               <TableColumn fx:id="staffPosCol" prefWidth="130.0" text="Position" />
+               <TableColumn fx:id="staffNameCol" prefWidth="153.0" text="Name" />
+               <TableColumn fx:id="staffPhoneCol" prefWidth="112.0" text="Phone" />
+               <TableColumn fx:id="staffAddrCol" minWidth="8.0" prefWidth="158.0" text="Address" />
+               <TableColumn fx:id="staffTitleCol" prefWidth="168.0" text="Position Title" />
+               <TableColumn fx:id="staffDelCol" prefWidth="35.0" text="^D" />
+            </columns>
+         </TableView>
+      </AnchorPane>
+      <AnchorPane fx:id="staffSearchPane" layoutY="70.0" prefHeight="729.0" prefWidth="840.0" style="-fx-background-color: #ebebeb;">
+         <JFXTextField fx:id="staffSearchField" focusColor="#cd3948" labelFloat="true" layoutX="33.0" layoutY="76.0" onAction="#staffSearch" prefHeight="29.0" prefWidth="220.0" promptText="Search Employee" styleClass="text-input" unFocusColor="BLACK">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXTextField>
+         <JFXButton fx:id="staffSearchBtn" buttonType="RAISED" ellipsisString="" layoutX="253.0" layoutY="73.0" onAction="#staffSearch" prefHeight="36.0" prefWidth="32.0">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <AnchorPane fx:id="staffInfoPane" layoutX="33.0" layoutY="157.0" prefHeight="566.0" prefWidth="774.0" visible="false">
+            <Label layoutX="156.0" layoutY="56.0" text="Name:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="468.0" layoutY="56.0" text="ID:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="467.0" layoutY="302.0" text="Phone:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="156.0" layoutY="302.0" text="Address:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="154.0" layoutY="177.0" text="Position:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="467.0" layoutY="177.0" text="Position Title:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="staffNameLabel" layoutX="208.0" layoutY="56.0" text="Unknown">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="staffPhoneLabel" layoutX="519.0" layoutY="302.0" text="Unknown">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="staffAddrLabel" layoutX="216.0" layoutY="302.0" text="Unknown">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="staffTitleLabel" layoutX="562.0" layoutY="177.0" text="Unknown">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="staffPosLabel" layoutX="220.0" layoutY="177.0" text="Unknown">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="staffIdLabel" layoutX="494.0" layoutY="56.0" text="Unknown">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="staffUpdateBtn" buttonType="RAISED" layoutX="604.0" layoutY="465.0" onAction="#staffUpdate" prefHeight="36.0" prefWidth="86.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField fx:id="staffNameField" focusColor="#cd3948" labelFloat="true" layoutX="208.0" layoutY="51.0" unFocusColor="BLACK" visible="false" />
+            <JFXTextField fx:id="staffPhoneField" focusColor="#cd3948" labelFloat="true" layoutX="519.0" layoutY="297.0" unFocusColor="BLACK" visible="false" />
+            <JFXTextField fx:id="staffAddrField" focusColor="#cd3948" labelFloat="true" layoutX="217.0" layoutY="297.0" unFocusColor="BLACK" visible="false" />
+            <JFXTextField fx:id="staffTitleField" focusColor="#cd3948" labelFloat="true" layoutX="563.0" layoutY="172.0" unFocusColor="BLACK" visible="false" />
+            <JFXTextField fx:id="staffPosField" focusColor="#cd3948" labelFloat="true" layoutX="217.0" layoutY="172.0" unFocusColor="BLACK" visible="false" />
+            <Label fx:id="staffUpdateError" layoutX="562.0" layoutY="475.0" text="Error" textFill="RED" visible="false" />
+         </AnchorPane>
+         <Label fx:id="staffSearchError" layoutX="33.0" layoutY="125.0" text="Not Found" textFill="RED" visible="false" />
+      </AnchorPane>
+      <AnchorPane fx:id="staffHeaderPane" prefHeight="64.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Label layoutX="14.0" layoutY="18.0" text="Staff" textFill="WHITE">
+            <font>
+               <Font name="System Bold Italic" size="19.0" />
+            </font>
+         </Label>
+         <JFXButton fx:id="staffNewEmpBtn" buttonType="RAISED" layoutX="873.0" layoutY="18.0" onAction="#staffNewEmployeeTab" prefHeight="46.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="New Employee" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="staffShowAllBtn" buttonType="RAISED" layoutX="729.0" layoutY="18.0" onAction="#staffShowAllTab" prefHeight="46.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Show All Staff" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="staffSearchTabBtn" buttonType="RAISED" layoutX="585.0" layoutY="18.0" onAction="#staffSearchTab" prefHeight="46.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Search Employee " textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+      </AnchorPane>
+   </AnchorPane>
+   <AnchorPane fx:id="patientPane" layoutX="233.0" prefHeight="800.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="patientCreatePane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+         <Label fx:id="patientErrorLabel" layoutX="876.0" layoutY="4.0" text="Patient Not Found" textFill="RED" visible="false">
+            <font>
+               <Font name="System Italic" size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="457.0" layoutY="43.0" text="Add Patient Details">
+            <font>
+               <Font name="System Bold Italic" size="15.0" />
+            </font>
+         </Label>
+         <JFXTextField fx:id="patientIdField" focusColor="#cd3948" labelFloat="true" layoutX="458.0" layoutY="106.0" promptText="AMKA" unFocusColor="BLACK" />
+         <JFXTextField fx:id="patientNameField" focusColor="#cd3948" labelFloat="true" layoutX="458.0" layoutY="173.0" promptText="Name" unFocusColor="BLACK" />
+         <JFXComboBox fx:id="patientSexBox" focusColor="#cd3948" labelFloat="true" layoutX="458.0" layoutY="238.0" promptText="Sex" unFocusColor="BLACK" />
+         <JFXDatePicker fx:id="patientDateField" defaultColor="#cd3948" layoutX="459.0" layoutY="304.0" promptText="Date of Birth" />
+         <JFXTextField fx:id="patientInsurField" focusColor="#cd3948" labelFloat="true" layoutX="459.0" layoutY="368.0" promptText="Insurance" unFocusColor="BLACK" />
+         <JFXTextField fx:id="patientAddreField" focusColor="#cd3948" labelFloat="true" layoutX="459.0" layoutY="431.0" promptText="Address" unFocusColor="BLACK" />
+         <JFXTextField fx:id="patientPhoneField" focusColor="#cd3948" labelFloat="true" layoutX="459.0" layoutY="500.0" promptText="Phone" unFocusColor="BLACK" />
+         <JFXButton fx:id="patientInsertBtn" buttonType="RAISED" layoutX="550.0" layoutY="636.0" onAction="#patientInsert" prefHeight="36.0" prefWidth="86.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Insert" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXButton>
+         <Label fx:id="patientInsertErrorLabel" layoutX="489.0" layoutY="646.0" prefHeight="17.0" prefWidth="43.0" text="Success" textFill="RED" />
+         <JFXTextField fx:id="patientPassword" focusColor="#cd3948" labelFloat="true" layoutX="460.0" layoutY="566.0" promptText="Password" unFocusColor="BLACK" />
+      </AnchorPane>
+      <AnchorPane fx:id="patientFoundPane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+         <Label layoutX="59.0" layoutY="42.0" text="Details">
+            <font>
+               <Font name="System Bold Italic" size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="59.0" layoutY="104.0" text="Name:" />
+         <Label layoutX="59.0" layoutY="136.0" text="AMKA:" />
+         <Label layoutX="59.0" layoutY="171.0" text="Sex:" />
+         <Label layoutX="60.0" layoutY="205.0" text="Date of Birth:" />
+         <Label layoutX="60.0" layoutY="241.0" text="Insurance Policy:" />
+         <Label layoutX="62.0" layoutY="278.0" text="Address:" />
+         <Label layoutX="62.0" layoutY="314.0" text="Phone Number:" />
+         <Label fx:id="patientNameLabel" layoutX="104.0" layoutY="104.0" text="Unknown" />
+         <Label fx:id="patientIdLabel" layoutX="104.0" layoutY="136.0" text="Unknown" />
+         <Label fx:id="patientSexLabel" layoutX="90.0" layoutY="171.0" text="Unknown" />
+         <Label fx:id="patientDateLabel" layoutX="136.0" layoutY="205.0" text="Unknown" />
+         <Label fx:id="patientInsurLabel" layoutX="156.0" layoutY="241.0" text="Unknown" />
+         <Label fx:id="patientAddreLabel" layoutX="116.0" layoutY="278.0" text="Unknown" />
+         <Label fx:id="patientPhoneLabel" layoutX="156.0" layoutY="314.0" text="Unknown" />
+         <Label layoutX="59.0" layoutY="413.0" text="Records">
+            <font>
+               <Font name="System Bold Italic" size="15.0" />
+            </font>
+         </Label>
+         <TableView fx:id="patientRecordView" layoutX="59.0" layoutY="465.0" prefHeight="249.0" prefWidth="930.0" tableMenuButtonVisible="true">
+            <columns>
+               <TableColumn fx:id="patientDateCol" prefWidth="125.0" text="Date Diagnosed" />
+               <TableColumn fx:id="patientDiseaseCol" prefWidth="167.0" text="Disease Name" />
+               <TableColumn fx:id="patientExamCol" prefWidth="178.0" text="Exam Name" />
+               <TableColumn fx:id="patientByCol" prefWidth="156.0" text="Diagnosed by" />
+               <TableColumn fx:id="patientSpecialityCol" prefWidth="148.0" text="Speciality" />
+               <TableColumn fx:id="patientHospitalisedCol" prefWidth="143.0" text="Was Hospitalised" />
+            </columns>
+         </TableView>
+         <TableView fx:id="patientPrescripView" layoutX="563.0" layoutY="322.0" prefHeight="143.0" prefWidth="426.0" tableMenuButtonVisible="true">
+            <columns>
+               <TableColumn fx:id="patientMedicineCol" prefWidth="182.0" text="Medicine Name" />
+               <TableColumn fx:id="patientQuantityCol" prefWidth="84.0" text="Quantity" />
+               <TableColumn fx:id="patientDoseCol" prefWidth="69.0" text="Dose" />
+               <TableColumn fx:id="patientTypeCol" prefWidth="76.0" text="Type" />
+            </columns>
+         </TableView>
+         <JFXTextField fx:id="patientUNameField" focusColor="#cd3948" layoutX="98.0" layoutY="96.0" unFocusColor="#cd3948" visible="false" />
+         <JFXTextField fx:id="patientUsexField" focusColor="#cd3948" layoutX="86.0" layoutY="163.0" unFocusColor="#cd3948" visible="false" />
+         <JFXTextField fx:id="patientUDateField" focusColor="#cd3948" layoutX="134.0" layoutY="197.0" unFocusColor="#cd3948" visible="false" />
+         <JFXTextField fx:id="patientUInsField" focusColor="#cd3948" layoutX="154.0" layoutY="233.0" unFocusColor="#cd3948" visible="false" />
+         <JFXTextField fx:id="patientUAddrField" focusColor="#cd3948" layoutX="112.0" layoutY="270.0" unFocusColor="#cd3948" visible="false" />
+         <JFXTextField fx:id="patientUPhoneField" focusColor="#cd3948" layoutX="146.0" layoutY="306.0" unFocusColor="#cd3948" visible="false" />
+         <JFXButton fx:id="patientUpdateBtn" buttonType="RAISED" layoutX="197.0" layoutY="354.0" onAction="#patientUpdate" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Update" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXButton>
+         <Label fx:id="patientUErrorLabel" layoutX="145.0" layoutY="360.0" text="Success" visible="false" />
+      </AnchorPane>
+      <AnchorPane fx:id="patientSearchPane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+         <JFXTextField fx:id="patientSearchField" focusColor="#cd3948" labelFloat="true" layoutX="175.0" layoutY="26.0" onAction="#patientSearch" prefHeight="29.0" prefWidth="220.0" promptText="Search Patient" styleClass="text-input" unFocusColor="BLACK">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXTextField>
+         <JFXButton fx:id="patientSearchBtn" buttonType="RAISED" ellipsisString="" layoutX="395.0" layoutY="23.0" onAction="#patientSearch" prefHeight="36.0" prefWidth="32.0">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXTextField fx:id="patientSymptomsField" focusColor="#cd3948" labelFloat="true" layoutX="621.0" layoutY="26.0" onAction="#patientRecommend" prefHeight="29.0" prefWidth="220.0" promptText="Recommend Doctor (symptoms)" unFocusColor="BLACK">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXTextField>
+         <JFXButton fx:id="patientSearchBtn1" buttonType="RAISED" ellipsisString="" layoutX="841.0" layoutY="28.0" onAction="#patientRecommend" prefHeight="25.0" prefWidth="32.0">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <Label fx:id="patientDoctorSpecialityLabel" layoutX="621.0" layoutY="105.0" text="Speciality:" visible="false">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="patientSpecialityResultLabel" layoutX="696.0" layoutY="105.0" text="Speciality" visible="false">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="patientDoctorSpecialityLabel1" layoutX="621.0" layoutY="133.0" text="Name:" visible="false">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="patientSpecialityResultLabel1" layoutX="696.0" layoutY="133.0" text="Speciality" visible="false">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+      </AnchorPane>
+      <AnchorPane prefHeight="64.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Label layoutX="14.0" layoutY="18.0" text="Patients" textFill="WHITE">
+            <font>
+               <Font name="System Bold Italic" size="19.0" />
+            </font>
+         </Label>
+         <JFXButton fx:id="patientAddNewBtn" buttonType="RAISED" layoutX="456.0" onAction="#patientHome" prefHeight="36.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Home" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXButton>
+      </AnchorPane>
+   </AnchorPane>
+   <AnchorPane fx:id="examPane" layoutX="233.0" prefHeight="800.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="examDiseasePane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+         <Pane prefHeight="37.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <effect>
+               <DropShadow color="#8a8383" height="30.0" radius="14.5" spread="0.15" width="30.0" />
+            </effect></Pane>
+         <TableView fx:id="examDiseaseTable" layoutX="29.0" layoutY="189.0" prefHeight="349.0" prefWidth="853.0" tableMenuButtonVisible="true">
+            <columns>
+               <TableColumn fx:id="examDiseaseIDCol" prefWidth="83.0" text="Disease ID" />
+               <TableColumn fx:id="examDiseaseNameCol" minWidth="0.0" prefWidth="202.0" text="Disease Name" />
+               <TableColumn fx:id="examDiseaseSpecialityCol" minWidth="0.0" prefWidth="183.0" text="Speciality  " />
+               <TableColumn fx:id="examDiseaseSymptomsCol" prefWidth="300.0" text="Symptoms" />
+               <TableColumn fx:id="examDiseaseECol" minWidth="0.0" prefWidth="37.0" text="E^" />
+               <TableColumn fx:id="examDiseaseDCol" minWidth="0.0" prefWidth="34.0" text="D^" />
+            </columns>
+         </TableView>
+         <JFXButton fx:id="examDiseaseAddBtn" buttonType="RAISED" layoutX="919.0" layoutY="65.0" onAction="#examDiseaseAddNew" prefHeight="37.0" prefWidth="79.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Add New" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <AnchorPane fx:id="examDiseaseInPane" layoutX="891.0" layoutY="221.0" onDragDetected="#examDiseaseAddNew" prefHeight="297.0" prefWidth="136.0" visible="false">
+            <JFXTextField fx:id="examDiseaseNameField" focusColor="#cd3948" labelFloat="true" layoutX="1.0" layoutY="64.0" promptText="Name" />
+            <JFXTextField fx:id="examDiseaseSpecialityField" focusColor="#cd3948" labelFloat="true" layoutX="1.0" layoutY="116.0" promptText="Speciality" />
+            <JFXButton fx:id="examDiseaseEditBtn" buttonType="RAISED" layoutX="46.0" layoutY="256.0" onAction="#examDiseaseComplete" prefHeight="28.0" prefWidth="46.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextArea fx:id="examDiseaseSymptomsField" focusColor="#cd3948" labelFloat="true" layoutX="1.0" layoutY="169.0" prefHeight="64.0" prefWidth="135.0" promptText="Symptoms" />
+            <JFXButton fx:id="examDiseaseCloseBtn" layoutX="109.0" layoutY="14.0" onAction="#examDiseaseClosePane" prefHeight="21.0" prefWidth="27.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="X" textFill="WHITE">
+               <font>
+                  <Font name="Lato Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label fx:id="examDiseaseIDLabel" layoutY="17.0" text="ID: #" />
+         </AnchorPane>
+      </AnchorPane>
+      <AnchorPane fx:id="examMedicinePane" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+         <Pane prefHeight="37.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <effect>
+               <DropShadow color="#8a8383" height="30.0" radius="14.5" spread="0.15" width="30.0" />
+            </effect>
+         </Pane>
+         <TableView fx:id="examMedicineTable" layoutX="125.0" layoutY="133.0" prefHeight="470.0" prefWidth="763.0" tableMenuButtonVisible="true">
+            <columns>
+               <TableColumn fx:id="examMedicineIDCol" prefWidth="83.0" text="Medicine ID" />
+               <TableColumn fx:id="examMedicineNameCol" minWidth="0.0" prefWidth="165.0" text="Medicine Name" />
+               <TableColumn fx:id="examMedicineTypeCol" minWidth="0.0" prefWidth="102.0" text="Type" />
+               <TableColumn fx:id="examMedicineDoseCol" minWidth="0.0" prefWidth="53.0" text="Dose" />
+               <TableColumn fx:id="examMedicineDiseaseCol" minWidth="0.0" prefWidth="164.0" text="For Disease" />
+               <TableColumn fx:id="examMedicineQuantityCol" prefWidth="125.0" text="Quantity Prescribed" />
+               <TableColumn fx:id="examMedicineECol" minWidth="0.0" prefWidth="31.0" text="E^" />
+               <TableColumn fx:id="examMedicineDCol" minWidth="0.0" prefWidth="26.0" text="D^" />
+            </columns>
+         </TableView>
+         <JFXButton fx:id="examMedicineAddBtn" buttonType="RAISED" layoutX="919.0" layoutY="65.0" onAction="#examMedicineAddNew" prefHeight="37.0" prefWidth="79.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Add New" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <AnchorPane fx:id="examMedicineInPane" layoutX="893.0" layoutY="224.0" prefHeight="267.0" prefWidth="140.0" visible="false">
+            <JFXTextField fx:id="examMedicineNameField" focusColor="#cd3948" labelFloat="true" layoutX="3.0" layoutY="39.0" promptText="Name" />
+            <JFXTextField fx:id="examMedicineTypeField" focusColor="#cd3948" labelFloat="true" layoutX="3.0" layoutY="91.0" promptText="Type" />
+            <JFXTextField fx:id="examMedicineDoseField" focusColor="#cd3948" labelFloat="true" layoutX="3.0" layoutY="143.0" promptText="Dose" />
+            <JFXTextField fx:id="examMedicineDiseaseField" focusColor="#cd3948" labelFloat="true" layoutX="2.0" layoutY="192.0" promptText="Disease ID" />
+            <JFXButton fx:id="examMedicineEditBtn" buttonType="RAISED" layoutX="47.0" layoutY="238.0" onAction="#examMedicineComplete" prefHeight="28.0" prefWidth="46.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="examMedicineCloseBtn" layoutX="113.0" layoutY="-7.0" onAction="#examMedicineClosePane" prefHeight="21.0" prefWidth="27.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="X" textFill="WHITE">
+               <font>
+                  <Font name="Lato Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label fx:id="examMedicineIDLabel" layoutX="3.0" layoutY="-4.0" text="ID: #" />
+         </AnchorPane>
+      </AnchorPane>
+      <AnchorPane fx:id="examProcedurePane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+         <Pane prefHeight="37.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <effect>
+               <DropShadow color="#8a8383" height="30.0" radius="14.5" spread="0.15" width="30.0" />
+            </effect>
+         </Pane>
+         <TableView fx:id="examProcedureTable" layoutX="252.0" layoutY="275.0" prefHeight="349.0" prefWidth="543.0" tableMenuButtonVisible="true">
+            <columns>
+               <TableColumn fx:id="examProcedureIDCol" prefWidth="109.0" text="Procedure ID" />
+               <TableColumn fx:id="examProcedureNameCol" minWidth="0.0" prefWidth="359.0" text="Procedure Name" />
+               <TableColumn fx:id="examProcedureECol" minWidth="0.0" prefWidth="32.0" text="E^" />
+               <TableColumn fx:id="examProcedureDCol" minWidth="0.0" prefWidth="30.0" text="D^" />
+            </columns>
+         </TableView>
+         <Label layoutX="458.0" layoutY="113.0" text="Add New Procedure">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <JFXTextField fx:id="examProcedureAddField" focusColor="#cd3948" labelFloat="true" layoutX="405.0" layoutY="179.0" onAction="#examProcedureAdd" prefHeight="25.0" prefWidth="192.0" promptText="Name" />
+         <JFXButton fx:id="examProcedureAddBtn" buttonType="RAISED" layoutX="597.0" layoutY="177.0" onAction="#examProcedureAdd" prefHeight="28.0" prefWidth="46.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Add" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <AnchorPane fx:id="examProcedureEditPane" layoutX="806.0" layoutY="397.0" prefHeight="106.0" prefWidth="206.0" visible="false">
+            <JFXButton fx:id="examProcedureEditBtn" buttonType="RAISED" layoutX="160.0" layoutY="39.0" onAction="#examProcedureEdit" prefHeight="28.0" prefWidth="46.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Edit" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField fx:id="examProcedureEditField" focusColor="#cd3948" labelFloat="true" layoutY="41.0" onAction="#examProcedureEdit" prefHeight="25.0" prefWidth="160.0" promptText="Name" />
+            <Label fx:id="examProcedureIDLabel" layoutX="2.0" layoutY="6.0" text="ID: #" />
+         </AnchorPane>
+      </AnchorPane>
+      <AnchorPane fx:id="examNursePane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+         <Pane prefHeight="37.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <effect>
+               <DropShadow color="#8a8383" height="30.0" radius="14.5" spread="0.15" width="30.0" />
+            </effect>
+         </Pane>
+         <JFXButton fx:id="examNurseSearchBtn" buttonType="RAISED" layoutX="255.0" layoutY="96.0" onAction="#examNurseSearch" prefHeight="28.0" prefWidth="32.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="S" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <AnchorPane fx:id="examNurseFoundPane" layoutX="14.0" layoutY="144.0" prefHeight="512.0" prefWidth="601.0" visible="false">
+            <JFXTextField fx:id="examNurseIDField" editable="false" focusColor="#cd3948" labelFloat="true" layoutX="69.0" layoutY="55.0" prefHeight="25.0" prefWidth="69.0" promptText="Nurse ID" />
+            <JFXTextArea fx:id="examNurseReportField" focusColor="#cd3948" labelFloat="true" layoutX="69.0" layoutY="217.0" promptText="Report" />
+            <JFXButton fx:id="examNurseDoneBtn" buttonType="RAISED" layoutX="513.0" layoutY="462.0" onAction="#examNurseComplete" prefHeight="36.0" prefWidth="74.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Done" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField fx:id="examNurseExamNameField" editable="false" focusColor="#cd3948" labelFloat="true" layoutX="69.0" layoutY="135.0" prefHeight="25.0" prefWidth="206.0" promptText="Procedure Name" />
+            <JFXDatePicker fx:id="examNurseDateField" defaultColor="#cd3848" layoutX="301.0" layoutY="132.0" prefHeight="28.0" prefWidth="106.0" promptText="Date" />
+         </AnchorPane>
+         <JFXTextField fx:id="examNurseIDPDEField" focusColor="#cd3948" labelFloat="true" layoutX="186.0" layoutY="98.0" onAction="#examNurseSearch" prefHeight="25.0" prefWidth="69.0" promptText="Exam ID" />
+         <Label layoutX="39.0" layoutY="101.0" text="Was ordered by Exam: ">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+      </AnchorPane>
+      <JFXTabPane fx:id="examDoctorPane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" stylesheets="@CSS.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="64.0">
+         <styleClass>
+            <String fx:value="jfx-tab-pane" />
+            <String fx:value="tab-header-background" />
+         </styleClass>
+         <Tab fx:id="examDoctorNewExamTab" closable="false" text="New Exam">
+            <AnchorPane fx:id="examDoctorNewExamPane" minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="1047.0">
+               <Label layoutX="39.0" layoutY="45.0" text="FILL FORM:">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </Label>
+               <JFXTextField fx:id="examDoctorNIDField" focusColor="#cd3948" labelFloat="true" layoutX="60.0" layoutY="104.0" onKeyReleased="#examDoctorNFillDiagnosis" prefHeight="25.0" prefWidth="135.0" promptText="Doctor ID" />
+               <JFXTextField fx:id="examDoctorNAMKAField" focusColor="#cd3948" labelFloat="true" layoutX="247.0" layoutY="104.0" prefHeight="25.0" prefWidth="135.0" promptText="Patient AMKA" />
+               <JFXComboBox fx:id="examDoctorNExamField" focusColor="#cd3948" labelFloat="true" layoutX="60.0" layoutY="187.0" prefHeight="25.0" prefWidth="206.0" promptText="Procedure Name" />
+               <JFXComboBox fx:id="examDoctorNDiagnosisField" focusColor="#cd3948" labelFloat="true" layoutX="60.0" layoutY="271.0" onAction="#examDoctorNFillMedicine" prefHeight="25.0" prefWidth="206.0" promptText="Diagnosis" />
+               <AnchorPane fx:id="examDoctorNReexamPane" layoutX="435.0" layoutY="187.0" prefHeight="106.0" prefWidth="251.0" visible="false">
+                  <JFXTextField fx:id="examDoctorNNurseField" focusColor="#cd3948" labelFloat="true" prefHeight="25.0" prefWidth="138.0" promptText="Nurse ID" />
+                  <JFXComboBox fx:id="examDoctorNNurseExamField" focusColor="#cd3948" labelFloat="true" layoutY="51.0" prefHeight="25.0" prefWidth="206.0" promptText="Procedure Name" />
+               </AnchorPane>
+               <JFXRadioButton fx:id="examDoctorNPrescriptionCheck" layoutX="60.0" layoutY="350.0" styleClass="jfx-radio-button" stylesheets="@CSS.css" text="Create Prescription" />
+               <AnchorPane fx:id="examDoctorNPrescriptionPane" layoutX="60.0" layoutY="384.0" prefHeight="236.0" prefWidth="704.0" visible="false">
+                  <Label layoutX="56.0" layoutY="35.0" text="Add Medicine:">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="examDoctorNPreNameField" focusColor="#cd3948" labelFloat="true" layoutX="20.0" layoutY="87.0" onAction="#examDoctorNFillType" prefHeight="25.0" prefWidth="160.0" promptText="Medicine Name" />
+                  <JFXTextField fx:id="examDoctorNPreQuantityField" focusColor="#cd3948" labelFloat="true" layoutX="21.0" layoutY="141.0" prefHeight="25.0" prefWidth="58.0" promptText="Quantity" />
+                  <JFXComboBox fx:id="examDoctorNPreTypeField" focusColor="#cd3948" labelFloat="true" layoutX="96.0" layoutY="141.0" prefHeight="25.0" prefWidth="84.0" promptText="Type" />
+                  <JFXButton fx:id="examDoctorNPreAddBtn" buttonType="RAISED" layoutX="77.0" layoutY="207.0" onAction="#examDoctorNAddMed" prefHeight="29.0" prefWidth="46.0" style="-fx-background-color: #cd3948;" text="Add" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <TableView fx:id="examDoctorNPreTable" layoutX="237.0" layoutY="18.0" prefHeight="200.0" prefWidth="453.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="examDoctorNPreNameCol" prefWidth="169.0" text="Medicine Name" />
+                        <TableColumn fx:id="examDoctorNPreTypeCol" prefWidth="100.0" text="Type" />
+                        <TableColumn fx:id="examDoctorNPreDoseCol" prefWidth="58.0" text="Dose" />
+                        <TableColumn fx:id="examDoctorNPreQuantityCol" text="Quantity" />
+                        <TableColumn fx:id="examDoctorNPreDCol" minWidth="2.0" prefWidth="32.0" text="D^" />
+                     </columns>
+                  </TableView>
+               </AnchorPane>
+               <JFXButton fx:id="examDoctorNDoneBtn" buttonType="RAISED" layoutX="876.0" layoutY="620.0" onAction="#examDoctorNComplete" prefHeight="29.0" prefWidth="74.0" style="-fx-background-color: #cd3948;" text="Done" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </JFXButton>
+               <Label fx:id="examDoctorNResultLabel" layoutX="813.0" layoutY="576.0" text="New Patient Doctor Exam ID:#" visible="false">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <JFXRadioButton fx:id="examDoctorNReexamCheck" layoutX="307.0" layoutY="191.0" styleClass="jfx-radio-button" stylesheets="@CSS.css" text="To Reexam" />
+               <JFXDatePicker fx:id="examDoctorNDatePicker" defaultColor="#cd3948" layoutX="435.0" layoutY="101.0" onAction="#setDoctorIDAutoComplete" prefHeight="28.0" prefWidth="119.0" promptText="Date" />
+               <JFXButton fx:id="examDoctorNClearBtn" buttonType="RAISED" layoutX="959.0" layoutY="620.0" onAction="#examDoctorNClear" prefHeight="29.0" prefWidth="74.0" style="-fx-background-color: #cd3948;" text="Clear" textFill="WHITE">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </JFXButton>
+            </AnchorPane>
+         </Tab>
+         <Tab fx:id="examDoctorReexamTab" closable="false" text="Reexam">
+            <AnchorPane fx:id="examDoctorReexamPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <SplitPane dividerPositions="0.11461318051575932" layoutY="-1.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <AnchorPane fx:id="examDoctorReSearchPane" minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="1045.0">
+                     <Label layoutX="264.0" layoutY="30.0" text="OR">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </Label>
+                     <JFXTextField fx:id="examDoctorRePDEIDField" focusColor="#cd3948" labelFloat="true" layoutX="138.0" layoutY="28.0" onAction="#examDoctorReSearch" prefHeight="25.0" prefWidth="70.0" promptText="Exam ID" />
+                     <JFXTextField fx:id="examDoctorReDoctorIDField" focusColor="#cd3948" labelFloat="true" layoutX="355.0" layoutY="29.0" prefHeight="25.0" prefWidth="70.0" promptText="Doctor ID" />
+                     <JFXTextField fx:id="examDoctorRePatientIDField" focusColor="#cd3948" labelFloat="true" layoutX="456.0" layoutY="29.0" prefHeight="25.0" prefWidth="70.0" promptText="Patient ID" />
+                     <JFXTextField fx:id="examDoctorReExamIDField" focusColor="#cd3948" labelFloat="true" layoutX="557.0" layoutY="29.0" prefHeight="25.0" prefWidth="70.0" promptText="Procedure ID" />
+                     <JFXDatePicker fx:id="examDoctorReOldDatePicker" defaultColor="#cd3948" layoutX="659.0" layoutY="26.0" prefHeight="28.0" prefWidth="123.0" promptText="Date of Exam" />
+                     <JFXButton fx:id="examDoctorReSearchBtn" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="822.0" layoutY="26.0" onAction="#examDoctorReSearch" prefHeight="29.0" prefWidth="86.0" style="-fx-background-color: #cd3948;" text="Search" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </JFXButton>
+                     <FontAwesomeIconView disable="true" fill="WHITE" glyphName="SEARCH" layoutX="882.0" layoutY="46.0" size="18" />
+                  </AnchorPane>
+                  <AnchorPane fx:id="examDoctorReMainPane" minHeight="0.0" minWidth="0.0" prefHeight="264.0" prefWidth="1045.0" visible="false">
+                     <Label layoutX="60.0" layoutY="34.0" text="INFO:">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="70.0" layoutY="79.0" text="Doctor ID:" />
+                     <Label layoutX="70.0" layoutY="121.0" text="Patient AMKA:" />
+                     <Label layoutX="70.0" layoutY="171.0" text="Examination Name:" />
+                     <Label layoutX="70.0" layoutY="221.0" text="Examination Date:" />
+                     <Label layoutX="70.0" layoutY="269.0" text="Diagnosis:" />
+                     <Label fx:id="examDoctorReDoctorIdLabel" layoutX="133.0" layoutY="79.0" text="NULL" />
+                     <Label fx:id="examDoctorRePatientIDLabel" layoutX="155.0" layoutY="121.0" prefHeight="17.0" prefWidth="36.0" text="NULL" />
+                     <JFXDatePicker fx:id="examDoctorReExamDate" defaultColor="#cd3948" layoutX="176.0" layoutY="216.0" prefHeight="28.0" prefWidth="123.0" promptText="Date of Exam" />
+                     <JFXComboBox fx:id="examDoctorReDiagnosisLabel" focusColor="#cd3948" labelFloat="true" layoutX="133.0" layoutY="265.0" onAction="#examDoctorRePreMedicineFill" prefHeight="25.0" prefWidth="149.0" />
+                     <JFXCheckBox fx:id="examDoctorReHospitalisedCheck" checkedColor="#cd3948" layoutX="72.0" layoutY="542.0" text="Should be Hospitalised">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </JFXCheckBox>
+                     <Label fx:id="examDoctorRePrescriptionIDLabel" layoutX="500.0" layoutY="34.0" text="PRESCRIPTION: #">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </Label>
+                     <JFXButton fx:id="examDoctorReDoneBtn" buttonType="RAISED" layoutX="856.0" layoutY="537.0" onAction="#examDoctorReComplete" prefHeight="29.0" prefWidth="74.0" style="-fx-background-color: #cd3948;" text="Done" textFill="WHITE" AnchorPane.bottomAnchor="49.0">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </JFXButton>
+                     <AnchorPane fx:id="examDoctorRePrescriptionPane" layoutX="465.0" layoutY="58.0" prefHeight="456.0" prefWidth="522.0">
+                        <TableView fx:id="examDoctorRePreTable" layoutX="63.0" layoutY="36.0" prefHeight="200.0" prefWidth="452.0" tableMenuButtonVisible="true">
+                           <columns>
+                              <TableColumn fx:id="examDoctorReNameCol" prefWidth="169.0" text="Medicine Name" />
+                              <TableColumn fx:id="examDoctorReTypeCol" prefWidth="100.0" text="Type" />
+                              <TableColumn fx:id="examDoctorReDoseCol" prefWidth="58.0" text="Dose" />
+                              <TableColumn fx:id="examDoctorReQuantityCol" text="Quantity" />
+                              <TableColumn fx:id="examDoctorReDCol" minWidth="2.0" prefWidth="32.0" text="D^" />
+                           </columns>
+                        </TableView>
+                        <JFXRadioButton fx:id="examDoctorRePreAddRadio" layoutX="62.0" layoutY="257.0" onAction="#examDoctorRePreShowMedPane" text="Prescribe more medicine" />
+                        <AnchorPane fx:id="examDoctorRePreAddPane" layoutX="47.0" layoutY="281.0" prefHeight="175.0" prefWidth="200.0" visible="false">
+                           <JFXComboBox fx:id="examDoctorRePreNameField" focusColor="#cd3948" labelFloat="true" layoutX="25.0" layoutY="22.0" onAction="#examDoctorRePreFillType" prefHeight="25.0" prefWidth="149.0" promptText="Medicine Name" />
+                           <JFXComboBox fx:id="examDoctorRePreTypeField" focusColor="#cd3948" labelFloat="true" layoutX="25.0" layoutY="75.0" prefHeight="25.0" prefWidth="88.0" promptText="Type" />
+                           <JFXTextField fx:id="examDoctorRePreQuantityField" focusColor="#cd3948" labelFloat="true" layoutX="126.0" layoutY="75.0" prefHeight="25.0" prefWidth="50.0" promptText="Quantity" />
+                           <JFXButton fx:id="examDoctorRePreAddBtn" buttonType="RAISED" layoutX="77.0" layoutY="126.0" onAction="#examDoctorReAdd" prefHeight="29.0" prefWidth="46.0" style="-fx-background-color: #cd3948;" text="Add" textFill="WHITE">
+                              <font>
+                                 <Font name="System Bold" size="13.0" />
+                              </font>
+                           </JFXButton>
+                        </AnchorPane>
+                     </AnchorPane>
+                     <JFXButton fx:id="examDoctorReCancelBtn" buttonType="RAISED" layoutX="940.0" layoutY="537.0" onAction="#examDoctorReCancel" prefHeight="29.0" prefWidth="74.0" style="-fx-background-color: #cd3948;" text="Cancel" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="13.0" />
+                        </font>
+                     </JFXButton>
+                     <JFXTextArea fx:id="examDoctorReReport" editable="false" focusColor="#cd4938" labelFloat="true" layoutX="72.0" layoutY="350.0" prefHeight="156.0" prefWidth="392.0" promptText="Nurse Report:" style="-fx-background-color: #dedede;" />
+                     <JFXComboBox fx:id="examDoctorReExamNameField" focusColor="#cd3948" labelFloat="true" layoutX="182.0" layoutY="167.0" prefHeight="25.0" prefWidth="149.0" />
+                     <Label layoutX="228.0" layoutY="79.0" text="Previous Exam:" />
+                     <Label fx:id="examDoctorRePrevExamLabel" layoutX="312.0" layoutY="79.0" text="NULL" />
+                     <Label layoutX="228.0" layoutY="121.0" text="Previous Exam Date:" />
+                     <Label fx:id="examDoctorRePrevDateLabel" layoutX="341.0" layoutY="121.0" text="NULL" />
+                     <Label layoutX="337.0" layoutY="326.0" text="Nurse Exam:" />
+                     <Label fx:id="examDoctorReNurseLabel" layoutX="408.0" layoutY="326.0" text="N/A" />
+                     <Label layoutX="240.0" layoutY="326.0" text="Nurse ID:" />
+                     <Label fx:id="examDoctorReNurseIDLabel" layoutX="295.0" layoutY="326.0" text="N/A" />
+                     <Label fx:id="examDoctorReIDPDELabel" layoutX="104.0" layoutY="35.0" text="NULL" visible="false" />
+                  </AnchorPane>
+               </SplitPane>
+            </AnchorPane>
+         </Tab>
+      </JFXTabPane>
+      <AnchorPane fx:id="examHeaderPane" prefHeight="64.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Label fx:id="examHeaderName" layoutX="14.0" layoutY="18.0" text="Doctor Examination" textFill="WHITE">
+            <font>
+               <Font name="System Bold Italic" size="19.0" />
+            </font>
+         </Label>
+         <JFXButton fx:id="examMedBtn" buttonType="RAISED" layoutX="475.0" layoutY="12.0" onAction="#changeExamTabs" prefHeight="46.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Medicines" textFill="WHITE" AnchorPane.rightAnchor="437.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="examProcedureBtn" buttonType="RAISED" layoutX="616.0" layoutY="12.0" onAction="#changeExamTabs" prefHeight="46.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Procedures" textFill="WHITE" AnchorPane.rightAnchor="296.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="examDoctorBtn" buttonType="RAISED" layoutX="757.0" layoutY="12.0" onAction="#changeExamTabs" prefHeight="46.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Doctor Exam Form" textFill="WHITE" AnchorPane.rightAnchor="155.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="examNurseBtn" buttonType="RAISED" layoutX="898.0" layoutY="12.0" onAction="#changeExamTabs" prefHeight="46.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Nurse Exam Form" textFill="WHITE" AnchorPane.rightAnchor="14.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="examDiseaseBtn" buttonType="RAISED" layoutX="334.0" layoutY="12.0" onAction="#changeExamTabs" prefHeight="46.0" prefWidth="135.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Diseases" textFill="WHITE" AnchorPane.rightAnchor="578.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+      </AnchorPane>
+   </AnchorPane>
+   <AnchorPane fx:id="dbPane" layoutX="233.0" prefHeight="800.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="DB3Pane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+         <Label layoutX="54.0" layoutY="47.0" text="COVID-19" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </Label>
+         <Label layoutX="817.0" layoutY="50.0" text="CASES TILL NOW:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+         </Label>
+         <Label fx:id="DB3Cases" layoutX="956.0" layoutY="50.0" text="0" textFill="ORANGERED">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+         </Label>
+         <Label layoutX="48.0" layoutY="204.0" text="Patients diagnosed with the disease:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         <JFXListView fx:id="DB3PatientList" layoutX="48.0" layoutY="252.0" />
+         <AnchorPane fx:id="DB3InfoPane" layoutX="323.0" layoutY="255.0" prefHeight="400.0" prefWidth="718.0" visible="false">
+            <Label layoutX="388.0" layoutY="48.0" text="Chronic diseases he has suffered:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <JFXListView fx:id="DB3DiseaseList" layoutX="389.0" layoutY="95.0" prefHeight="228.0" prefWidth="200.0" />
+            <Label layoutX="132.0" layoutY="48.0" text="INFO:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="132.0" layoutY="112.0" text="Name:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="132.0" layoutY="144.0" text="AMKA:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="132.0" layoutY="176.0" text="Gender:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="132.0" layoutY="209.0" text="Date of Birth:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="132.0" layoutY="241.0" text="Address:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="132.0" layoutY="272.0" text="Phone:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="DB3Name" layoutX="177.0" layoutY="112.0" text="Unknown" textFill="DARKORANGE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="DB3Amka" layoutX="177.0" layoutY="144.0" text="Unknown" textFill="DARKORANGE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="DB3Gender" layoutX="182.0" layoutY="176.0" text="Unknown" textFill="DARKORANGE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="DB3Date" layoutX="216.0" layoutY="209.0" text="Unknown" textFill="DARKORANGE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="DB3Address" layoutX="189.0" layoutY="241.0" text="Unknown" textFill="DARKORANGE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="DB3Phone" layoutX="177.0" layoutY="272.0" text="Unknown" textFill="DARKORANGE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </AnchorPane>
+      </AnchorPane>
+      <AnchorPane fx:id="DB4Pane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+         <JFXDatePicker fx:id="DB4DatePicker" defaultColor="#cd3948" layoutX="438.0" layoutY="39.0" onAction="#fillDB4" onKeyPressed="#fillDB4" promptText="Select Date" />
+         <AnchorPane fx:id="DB4MainPane" layoutY="109.0" prefHeight="586.0" prefWidth="1047.0" visible="false">
+            <Label fx:id="DB4Date" layoutX="90.0" layoutY="14.0" text="For Month Year" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="82.0" text="Select Staff Member:" textFill="#4d4d4d">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <JFXListView fx:id="DB4StaffList" layoutX="16.0" layoutY="124.0" prefHeight="400.0" prefWidth="239.0" />
+            <AnchorPane fx:id="DB4InfoPane" layoutX="236.0" layoutY="124.0" prefHeight="420.0" prefWidth="809.0" visible="false">
+               <BarChart fx:id="DB4Chart" layoutX="34.0" layoutY="61.0" legendVisible="false" prefHeight="359.0" prefWidth="774.0">
+                  <xAxis>
+                     <CategoryAxis fx:id="DB4XAxis" animated="false" label="Date" side="BOTTOM" />
+                  </xAxis>
+                  <yAxis>
+                     <NumberAxis fx:id="DB4YAxis" label="Hours of Work" side="LEFT" />
+                  </yAxis>
+               </BarChart>
+               <Label layoutX="227.0" layoutY="25.0" text="Total hours of work:" textFill="#4d4d4d">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </Label>
+               <Label layoutX="479.0" layoutY="25.0" text="Number of on-call duties:" textFill="#4d4d4d">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </Label>
+               <Label fx:id="DB4Hours" layoutX="358.0" layoutY="25.0" text="0" textFill="DARKORANGE">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </Label>
+               <Label fx:id="DB4Shifts" layoutX="642.0" layoutY="25.0" text="0" textFill="DARKORANGE">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </Label>
+            </AnchorPane>
+         </AnchorPane>
+      </AnchorPane>
+      <AnchorPane fx:id="DB5Pane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+         <JFXTextArea fx:id="DB5Query" focusColor="#cd3948" labelFloat="true" layoutX="291.0" layoutY="57.0" onKeyPressed="#Excecute" prefHeight="106.0" prefWidth="464.0" promptText="Query:" />
+         <JFXButton fx:id="DB5RunBtn" alignment="BOTTOM_RIGHT" buttonType="RAISED" layoutX="697.0" layoutY="179.0" onAction="#Run" prefHeight="29.0" prefWidth="60.0" ripplerFill="BLACK" style="-fx-background-color: #32CD32;" text="Run" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXButton>
+         <FontAwesomeIconView disable="true" fill="WHITE" glyphName="PLAY" layoutX="708.0" layoutY="198.0" size="13" />
+         <AnchorPane fx:id="DB5ResultPane" layoutY="245.0" prefHeight="512.0" prefWidth="1047.0" AnchorPane.bottomAnchor="0.0">
+            <TableView fx:id="DB5ResultTable" layoutX="18.0" layoutY="20.0" prefHeight="365.0" prefWidth="1011.0" />
+            <JFXTextArea fx:id="DB5Message" editable="false" focusColor="#cd3948" labelFloat="true" layoutX="18.0" layoutY="423.0" prefHeight="58.0" prefWidth="1011.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXTextArea>
+            <FontAwesomeIconView fx:id="Spinner" disable="true" fill="#39cdbe" glyphName="SPINNER" layoutX="24.0" layoutY="473.0" size="24" visible="false" />
+         </AnchorPane>
+      </AnchorPane>
+      <AnchorPane fx:id="DB2Pane" layoutX="1.0" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+         <JFXComboBox fx:id="DB2YearField" focusColor="#cd4938" labelFloat="true" layoutX="262.0" layoutY="36.0" prefHeight="25.0" prefWidth="150.0" promptText="Select Year" />
+         <JFXComboBox fx:id="DB2MonthField" focusColor="#cd4938" labelFloat="true" layoutX="449.0" layoutY="36.0" prefHeight="25.0" prefWidth="150.0" promptText="Select Month" />
+         <JFXComboBox fx:id="DB2DayField" focusColor="#cd4938" labelFloat="true" layoutX="636.0" layoutY="36.0" prefHeight="25.0" prefWidth="150.0" promptText="Select Day" />
+         <JFXButton fx:id="DB2IncidentsBtn" buttonType="RAISED" layoutY="112.0" onAction="#showIncidentsNumber" prefHeight="50.0" prefWidth="261.75" text="Number of Incidents" textFill="#4d4d4d" underline="true">
+            <font>
+               <Font size="15.0" />
+            </font>
+            <effect>
+               <DropShadow color="#4d4d4d" height="65.485" radius="32.98375" spread="0.13" width="68.45" />
+            </effect>
+         </JFXButton>
+         <JFXButton fx:id="DB2DiseasesBtn" buttonType="RAISED" layoutX="262.0" layoutY="112.0" onAction="#showDiseasesDiagnosed" prefHeight="50.0" prefWidth="261.75" text="Diseases Diagnosed" textFill="#4d4d4d" underline="true">
+            <font>
+               <Font size="15.0" />
+            </font>
+            <effect>
+               <DropShadow color="#4d4d4d" height="65.485" radius="32.98375" spread="0.13" width="68.45" />
+            </effect>
+         </JFXButton>
+         <JFXButton fx:id="DB2ExamBtn" buttonType="RAISED" layoutX="524.0" layoutY="112.0" onAction="#showExamsCompleted" prefHeight="50.0" prefWidth="261.75" text="Exams Completed" textFill="#4d4d4d" underline="true">
+            <font>
+               <Font size="15.0" />
+            </font>
+            <effect>
+               <DropShadow color="#4d4d4d" height="62.52" radius="32.2425" spread="0.13" width="68.45" />
+            </effect>
+         </JFXButton>
+         <JFXButton fx:id="DB2MedBtn" buttonType="RAISED" layoutX="786.0" layoutY="112.0" onAction="#showMedicinesPrescribed" prefHeight="50.0" prefWidth="261.75" text="Medicines Prescribed" textFill="#4d4d4d" underline="true">
+            <font>
+               <Font size="15.0" />
+            </font>
+            <effect>
+               <DropShadow color="#4d4d4d" height="62.52" radius="32.2425" spread="0.13" width="68.45" />
+            </effect>
+         </JFXButton>
+         <AnchorPane fx:id="MedPieChartPane" layoutX="-2.0" layoutY="176.0" prefHeight="560.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+            <PieChart fx:id="MedPieChart1" layoutY="55.0" prefHeight="505.0" prefWidth="523.5" />
+            <PieChart fx:id="MedPieChart2" layoutX="523.5" layoutY="55.0" prefHeight="505.0" prefWidth="523.5" />
+            <Label layoutX="848.0" layoutY="14.0" text="\@Click on chart for quantity prescribed">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </AnchorPane>
+         <AnchorPane fx:id="ExamPieChartPane" layoutX="-2.0" layoutY="176.0" prefHeight="560.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+            <PieChart fx:id="ExamPieChart1" layoutY="55.0" prefHeight="505.0" prefWidth="523.5" />
+            <PieChart fx:id="ExamPieChart2" layoutX="523.5" layoutY="55.0" prefHeight="505.0" prefWidth="523.5" />
+            <Label layoutX="876.0" layoutY="14.0" text="\@Click on chart for count number">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </AnchorPane>
+         <AnchorPane fx:id="DiseasePieChartPane" layoutX="-2.0" layoutY="176.0" prefHeight="560.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+            <PieChart fx:id="DiseasePieChart1" layoutY="55.0" prefHeight="505.0" prefWidth="523.5" />
+            <PieChart fx:id="DiseasePieChart2" layoutX="523.5" layoutY="55.0" prefHeight="505.0" prefWidth="523.5" />
+            <Label layoutX="876.0" layoutY="14.0" text="\@Click on chart for count number">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </AnchorPane>
+         <AnchorPane fx:id="IncidentsChartPane" layoutX="-2.0" layoutY="176.0" prefHeight="560.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+            <LineChart fx:id="IncidentsChart" layoutX="14.0" layoutY="16.0" legendSide="TOP" prefHeight="528.0" prefWidth="1001.0">
+               <xAxis>
+                  <CategoryAxis fx:id="ChartXAxis" animated="false" label="Date" side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="ChartYAxis" animated="false" label="Number of Incidents" side="LEFT" />
+               </yAxis>
+            </LineChart>
+         </AnchorPane>
+      </AnchorPane>
+      <AnchorPane fx:id="DB1Pane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+         <Label fx:id="DB1Date" layoutX="74.0" layoutY="34.0" text="Date" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Label>
+         <Label layoutX="155.0" layoutY="107.0" text="Incidents:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="155.0" layoutY="167.0" text="Doctors on-call:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="155.0" layoutY="227.0" text="Nurses on-call:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="155.0" layoutY="287.0" text="Workers on-call:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="155.0" layoutY="347.0" text="Doctor Examinations:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="155.0" layoutY="407.0" text="Nurse Examinations:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="155.0" layoutY="467.0" text="Diseases Diagnosed:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="155.0" layoutY="527.0" text="Medicines Prescribed:" textFill="#4d4d4d">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </Label>
+         <Label fx:id="DB1Incidents" layoutX="221.0" layoutY="107.0" text="0" textFill="DARKORANGE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+         <Label fx:id="DB1Doctors" layoutX="260.0" layoutY="167.0" text="0" textFill="DARKORANGE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+         <Label fx:id="DB1Nurses" layoutX="253.0" layoutY="227.0" text="0" textFill="DARKORANGE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+         <Label fx:id="DB1Workers" layoutX="264.0" layoutY="287.0" text="0" textFill="DARKORANGE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+         <Label fx:id="DB1PDE" layoutX="293.0" layoutY="347.0" text="0" textFill="DARKORANGE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+         <Label fx:id="DB1PNE" layoutX="287.0" layoutY="407.0" text="0" textFill="DARKORANGE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+         <Label fx:id="DB1Diseases" layoutX="287.0" layoutY="467.0" text="0" textFill="DARKORANGE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+         <Label fx:id="DB1Medicines" layoutX="297.0" layoutY="527.0" text="0" textFill="DARKORANGE">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Label>
+      </AnchorPane>
+      <AnchorPane fx:id="DBHeaderPane" prefHeight="64.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Label layoutX="14.0" layoutY="18.0" text="Database Search" textFill="WHITE">
+            <font>
+               <Font name="System Bold Italic" size="19.0" />
+            </font>
+         </Label>
+         <JFXButton fx:id="DB1Btn" buttonType="RAISED" layoutX="259.0" layoutY="18.0" onAction="#setDatabasePane" prefHeight="46.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Status of Visits Today" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="DB2Btn" buttonType="RAISED" layoutX="415.0" layoutY="18.0" onAction="#setDatabasePane" prefHeight="46.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Per Date Statistics" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="DB3Btn" buttonType="RAISED" layoutX="571.0" layoutY="18.0" onAction="#setDatabasePane" prefHeight="46.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Covid-19 Report" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="DB4Btn" buttonType="RAISED" layoutX="727.0" layoutY="18.0" onAction="#setDatabasePane" prefHeight="46.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Staff on-call Duties" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+         <JFXButton fx:id="DB5Btn" buttonType="RAISED" layoutX="883.0" layoutY="18.0" onAction="#setDatabasePane" prefHeight="46.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Excecute Queries" textFill="WHITE" AnchorPane.bottomAnchor="0.0">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+      </AnchorPane>
+   </AnchorPane>
+   <AnchorPane fx:id="schedPane" layoutX="233.0" prefHeight="800.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="schedHeaderPane" prefHeight="64.0" prefWidth="1047.0" style="-fx-background-color: #cd3948;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Label layoutX="14.0" layoutY="18.0" text="Schedule" textFill="WHITE">
+            <font>
+               <Font name="System Bold Italic" size="19.0" />
+            </font>
+         </Label>
+      </AnchorPane>
+      <AnchorPane fx:id="schedSearchPane" layoutY="64.0" prefHeight="736.0" prefWidth="1047.0" style="-fx-background-color: #ebebeb;">
+         <JFXDatePicker fx:id="schedSDatePicker" defaultColor="#cd3948" layoutX="73.0" layoutY="125.0" onAction="#schedSDateChange" promptText="Date" />
+         <Label layoutX="38.0" layoutY="74.0" prefHeight="28.0" prefWidth="138.0" text="Search by date:">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Label>
+         <TableView fx:id="schedStableView" editable="true" layoutX="296.0" layoutY="363.0" prefHeight="359.0" prefWidth="729.0" tableMenuButtonVisible="true">
+            <columns>
+               <TableColumn fx:id="schedSid" prefWidth="143.0" text="Employee ID Number" />
+               <TableColumn fx:id="schedSName" minWidth="7.0" prefWidth="173.0" text="Name" />
+               <TableColumn fx:id="schedSpos" minWidth="3.0" prefWidth="150.0" text="Position" />
+               <TableColumn fx:id="schedSHours" prefWidth="111.0" text="Hours Of Work" />
+               <TableColumn fx:id="schedSTime" prefWidth="104.0" text="Start Time" />
+               <TableColumn fx:id="schedSRemove" prefWidth="34.0" text="D^" />
+            </columns>
+         </TableView>
+         <JFXTextField fx:id="schedIdField" focusColor="#cd3948" layoutX="73.0" layoutY="502.0" promptText="ID" />
+         <JFXTextField fx:id="schedStartTimeField" focusColor="#cd3948" layoutX="73.0" layoutY="550.0" promptText="Start Time" />
+         <JFXTextField fx:id="schedHoursField" focusColor="#cd3948" layoutX="73.0" layoutY="604.0" promptText="Hours of work" />
+         <JFXDatePicker fx:id="schedEDatePicker" defaultColor="#cd3948" layoutX="73.0" layoutY="450.0" onAction="#schedEDateChange" promptText="Date" />
+         <TableView fx:id="schedETableView" editable="true" layoutX="465.0" layoutY="26.0" prefHeight="318.0" prefWidth="392.0" tableMenuButtonVisible="true">
+            <columns>
+               <TableColumn fx:id="schedEIdCol" prefWidth="41.0" text="ID" />
+               <TableColumn fx:id="schedENameCol" prefWidth="117.0" text="Name" />
+               <TableColumn fx:id="schedEPosCol" prefWidth="110.0" text="Position" />
+               <TableColumn fx:id="schedEAvailCol" prefWidth="110.0" text="Availability" />
+            </columns>
+         </TableView>
+         <Label layoutX="465.0" layoutY="5.0" prefHeight="19.0" prefWidth="74.0" text="Employees:">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font>
+         </Label>
+         <Label layoutX="296.0" layoutY="344.0" prefHeight="17.0" prefWidth="49.0" text="Shifts:">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font>
+         </Label>
+         <JFXButton fx:id="schedInsertBtn" buttonType="RAISED" layoutX="176.0" layoutY="653.0" onAction="#insertShift" prefHeight="36.0" prefWidth="86.0" ripplerFill="WHITE" style="-fx-background-color: #cd3948;" text="Insert" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="13.0" />
+            </font>
+         </JFXButton>
+         <Label layoutX="38.0" layoutY="397.0" prefHeight="28.0" prefWidth="160.0" text="Add Employee Shift:">
+            <font>
+               <Font name="System Bold" size="15.0" />
+            </font>
+         </Label>
+         <Label fx:id="schedFlag" layoutX="116.0" layoutY="663.0" prefHeight="17.0" prefWidth="49.0" />
+      </AnchorPane>
+   </AnchorPane>
+   <AnchorPane fx:id="tabPane" prefHeight="720.0" prefWidth="234.0" style="-fx-background-color: #39cdbe;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <effect>
+         <DropShadow />
+      </effect>
+      <JFXButton fx:id="schedBtn" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="-6.0" layoutY="229.0" onAction="#changeMainPain" prefHeight="64.0" prefWidth="240.0" ripplerFill="#cd3948" text="Schedule" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="patientBtn" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="-6.0" layoutY="293.0" onAction="#changeMainPain" prefHeight="64.0" prefWidth="240.0" ripplerFill="#cd3948" text="Patients" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="staffBtn" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="-6.0" layoutY="357.0" onAction="#changeMainPain" prefHeight="64.0" prefWidth="240.0" ripplerFill="#cd3948" text="Staff" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="examBtn" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="-6.0" layoutY="421.0" onAction="#changeMainPain" prefHeight="64.0" prefWidth="240.0" ripplerFill="#cd3948" text="Examinations" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="dbBtn" alignment="BASELINE_LEFT" buttonType="RAISED" layoutX="-6.0" layoutY="485.0" onAction="#changeMainPain" prefHeight="64.0" prefWidth="240.0" ripplerFill="#cd3948" text="Database Statistics" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="228.0" fitWidth="229.0" layoutX="3.0">
+         <Image url="@../Resources/8744534.png" />
+      </ImageView>
+   </AnchorPane>
+   <Label fx:id="pieChartLabel" text="23" textFill="#ffffffcf" visible="false">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+   </Label>
+   <Label fx:id="pieChartLabel1" layoutX="10.0" layoutY="10.0" text="23" textFill="#ffffffcf" visible="false">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font>
+   </Label>
+</AnchorPane>

@@ -1,0 +1,49 @@
+Faith S. Tirrell|386-203-8116|4311 Franklin Avenue|D|Pulmonologist
+Albert L. Francis|570-715-4738|4388 Coal Road|D|Neurologist
+Laura Gaertner|262-618-9840|4376 Fairfield Road|D|Oncologist
+Ellert Karlsson|239-254-4660|3552 Owen Lane|D|Cardiologist
+Archie Pearce|623-850-1254|2584 Cambridge Drive|D|Dermatologist
+Julia C. Hartsock|503-510-3853|1717 Kincheloe Road|D|Oncologist
+Marilyn J. Jones|352-586-9233|4781 Bagwell Avenue|D|Pulmonologist
+Glenn Leija|904-571-6670|3721 Boundary Street|D|Neurologist
+Alfonzo Rubin|857-829-7714|2764 Metz Lane|D|Cardiologist
+Hellen Boukla|415-393-8850|4376 Roosevelt Street|D|Oncologist
+Jeffrey Winger|818-844-2527|678 Koontz Lane|N|Head Nurse
+Juana Carlson|405-222-3864|4098 Musgrave Street|N|Nurse
+Jack Bays|407-579-1471|4196 Linden Avenue|N|Nurse
+Christopher Black|207-602-3765|3035 Bloomfield Way|N|Nurse
+Marie Gabor|715-605-7126|2654 Mercer Street|N|Nurse
+Casey Baker|510-306-7012|1319 Wayside Lane|W|Chief executive officer
+Karen Reed|210-706-8166|2937 Fidler Drive|W|Accountant
+---
+101|Willie Reyes|M|8-19-1959|1|288 Sun Valley Road|509-830-1827
+102|William Dicken|M|10-22-1939|2|3742 West Drive|312-486-7815
+103|John Killian|M|6-13-1993|1|4545 Bagwell Avenue|352-592-4337
+104|Jack Moore|M|8-2-1979|4|3529 Lawman Avenue|703-281-3055
+105|Vera Martin|F|12-22-1952|1|4295 O Conner Street|229-210-8391
+106|Tony Brown|M|8-10-1982|2|2869 Berry Street|719-573-4334
+107|Paul Blagg|M|3-29-1994|1|3395 Clousson Road|712-853-7944
+108|Paul Steele|M|4-29-1954|3|1579 Maple Lane|256-505-4108
+109|Carole Reyes|F|9-26-1964|1|1995 Glenwood Avenue|216-253-2660
+110|Douglas Lynn|M|5-6-1967|2|3126 Happy Hollow Road|910-590-1816
+---
+Pneumonia|Pulmonologist|chest pain
+Multiple Sclerosis|Neurologist|mobility problems
+Kaposi sarcoma|Oncologist|Lymphoma
+Hypertension|Cardiologist|nosebleeds
+Melanoma|Dermatologist|moles
+Covid-19|Pulmonologist|breath problems
+---
+Sputum test
+Blood test
+Covid test
+MRI scan
+X-Ray scan
+Skin biopsy
+---
+1|Levofloxacin|tablet|250
+1|Levoflin|capsule|150
+2|Copaxone|syringe|100
+3|Panretin|gel|500
+4|Lisinopril|syrup|10
+5|Opdivo|syringe|100

@@ -1,0 +1,24 @@
+DROP TABLE PDE;
+DROP TABLE PNE;
+DROP TABLE Prescription;
+DROP TABLE Medicine;
+DROP TABLE Record;
+DROP TABLE Disease;
+DROP TABLE Exam;
+DROP TABLE Patient;
+DROP TABLE Doctor;
+DROP TABLE Nurse;
+DROP TABLE Shift;
+DROP TABLE Employee;
+CREATE TABLE Employee (idEmp INT AUTO_INCREMENT,Name VARCHAR(20) NOT NULL,Phone VARCHAR(15),Address VARCHAR(40),Position VARCHAR(1) NOT NULL,PositionTitle VARCHAR(30) NOT NULL,PRIMARY KEY(idEmp),Check(Name!='' && PositionTitle!=''))
+CREATE TABLE Shift (idEmp INT,shiftDate DATE,shiftStart TIME NOT NULL,hoursOfWork INT NOT NULL,FOREIGN KEY(idEmp) references Employee(idEmp),PRIMARY KEY(idEmp, shiftDate))
+CREATE TABLE Nurse (idNurse INT,FOREIGN KEY(idNurse) references Employee(idEmp),PRIMARY KEY(idNurse))
+CREATE TABLE Doctor (idDoctor INT,Speciality VARCHAR(30) NOT NULL,FOREIGN KEY(idDoctor) references Employee(idEmp),PRIMARY KEY(idDoctor))
+CREATE TABLE Patient (AMKA INT,Name VARCHAR(20) NOT NULL,Sex VARCHAR(1),DateOfBirth DATE,Insurance INT,Address VARCHAR(40),Phone VARCHAR(15),PRIMARY KEY(AMKA),Check(Name!=''))
+CREATE TABLE Disease (idDisease INT AUTO_INCREMENT,Name VARCHAR(20) UNIQUE NOT NULL,Speciality VARCHAR(20) NOT NULL ,Symptoms VARCHAR(100),PRIMARY KEY(idDisease),CHECK (Name!='' && Speciality!=''))
+CREATE TABLE Record (idPatient INT,DateDiagnosed DATE,Diagnosis VARCHAR(20),Report VARCHAR(500),FOREIGN KEY(idPatient) REFERENCES Patient(AMKA),PRIMARY KEY(idPatient, DateDiagnosed, Diagnosis),  CHECK(Diagnosis!=''))
+CREATE TABLE Exam (idExam INT AUTO_INCREMENT,Name VARCHAR(20) UNIQUE NOT NULL,PRIMARY KEY(idExam),CHECK(Name!=''))
+CREATE TABLE Medicine (idMedicine INT AUTO_INCREMENT,idDisease INT,Name VARCHAR(20) NOT NULL,Type VARCHAR(10),Dose INT,FOREIGN KEY(idDisease) REFERENCES Disease(idDisease),PRIMARY KEY(idMedicine),CHECK(Name!='' && Type!=''),UNIQUE(Name, Type))
+CREATE TABLE Prescription (idPrescription INT AUTO_INCREMENT,idMedicine INT,Quantity INT NOT NULL,FOREIGN KEY(idMedicine) REFERENCES Medicine(idMedicine),PRIMARY KEY(idPrescription, idMedicine))
+CREATE TABLE PNE (idPNE INT AUTO_INCREMENT,idNurse INT NOT NULL, idExam INT NOT NULL,OperationDate Date DEFAULT CURRENT_DATE,FOREIGN KEY(idNurse) REFERENCES Nurse(idNurse),FOREIGN KEY(idExam) REFERENCES Exam(idExam),PRIMARY KEY(idPNE))
+CREATE TABLE PDE (idPDE INT AUTO_INCREMENT,idPatient INT NOT NULL, idDoctor INT NOT NULL, idExam INT NOT NULL, idPrescription INT,idPNE INT,Diagnosis VARCHAR(20) NOT NULL,  toHospitalise BOOLEAN DEFAULT FALSE,OperationDate DATE NOT NULL,FOREIGN KEY(idPatient) REFERENCES Patient(AMKA),FOREIGN KEY(idDoctor) REFERENCES Doctor(idDoctor),FOREIGN KEY(idExam) REFERENCES Exam(idExam),FOREIGN KEY(idPrescription) REFERENCES Prescription(idPrescription),FOREIGN KEY(idPNE) REFERENCES PNE(idPNE),PRIMARY KEY(idPDE),CHECK(Diagnosis!=''), UNIQUE(idPatient, idDoctor, idExam, OperationDate))
