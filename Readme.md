@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 <p align="center">
-    <img alt="alt title" width="200px" heigth="200px" src="src/Resources/8744534.png"/>
+    <img alt="alt title" width="300px" heigth="300px" src="src/Resources/8744534.png"/>
 </p>
 
 
